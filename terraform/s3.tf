@@ -4,7 +4,22 @@ resource "aws_s3_bucket" "site" {
 
   website {
     index_document = "index.html"
-    error_document = "error.html"
+    error_document = "index.html"
+  }
+
+  cors_rule {
+    allowed_headers = [
+      "Authorization",
+      "Content-Length"
+    ]
+
+    allowed_methods = [
+      "GET",
+      "POST"
+    ]
+
+    allowed_origins = ["https://shoorkathevarenik.com"]
+    max_age_seconds = 3000
   }
 }
 
